@@ -21,15 +21,7 @@ namespace
 	const int	PRIORITY	= 7;		// フェードの優先順位
 	const float	FADE_LEVEL	= 0.05f;	// フェードのα値の加減量
 
-#ifdef _DEBUG
-
-	const CScene::EMode INIT_SCENE = CScene::MODE_TITLE;	// 初期シーン
-
-#else	// NDEBUG
-
-	const CScene::EMode INIT_SCENE = CScene::MODE_TITLE;	// 初期シーン
-
-#endif	// _DEBUG
+	const CScene::EMode INIT_SCENE = CScene::MODE_GAME;	// 初期シーン
 }
 
 //************************************************************
@@ -39,10 +31,10 @@ namespace
 //	コンストラクタ
 //============================================================
 CFade::CFade() :
-	m_pObject2D		(nullptr),				// フェード表示の情報
-	m_fade			(FADE_NONE),			// フェード状態
-	m_modeNext		(CScene::MODE_TITLE),	// 次のシーンモード
-	m_nCounterWait	(0)						// 余韻管理カウンター
+	m_pObject2D		(nullptr),		// フェード表示の情報
+	m_fade			(FADE_NONE),	// フェード状態
+	m_modeNext		(INIT_SCENE),	// 次のシーンモード
+	m_nCounterWait	(0)				// 余韻管理カウンター
 {
 
 }

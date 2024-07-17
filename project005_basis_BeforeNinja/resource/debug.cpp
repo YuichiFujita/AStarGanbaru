@@ -229,12 +229,6 @@ void CDebug::UpdateDebugControl(void)
 
 	switch (GET_MANAGER->GetMode())
 	{ // モードごとの処理
-	case CScene::MODE_TITLE:
-		break;
-
-	case CScene::MODE_TUTORIAL:
-		break;
-
 	case CScene::MODE_GAME:
 
 		// エディターモード変更
@@ -243,15 +237,6 @@ void CDebug::UpdateDebugControl(void)
 		// ポーズ表示変更
 		ChangeDispPause();
 
-		// リザルト遷移
-		ResultTrans();
-
-		break;
-
-	case CScene::MODE_RESULT:
-		break;
-
-	case CScene::MODE_RANKING:
 		break;
 
 	default:
@@ -286,24 +271,11 @@ void CDebug::DrawDebugControl(void)
 
 	switch (GET_MANAGER->GetMode())
 	{ // モードごとの処理
-	case CScene::MODE_TITLE:
-		break;
-
-	case CScene::MODE_TUTORIAL:
-		break;
-
 	case CScene::MODE_GAME:
 
 		pDebugProc->Print(CDebugProc::POINT_LEFT, "[%s]：エディットモードのON/OFF\n", NAME_EDITMODE);
 		pDebugProc->Print(CDebugProc::POINT_LEFT, "[%s]：ポーズ描画のON/OFF\n", NAME_PAUSE_DISP);
-		pDebugProc->Print(CDebugProc::POINT_LEFT, "[%s]：リザルト遷移\n", NAME_RESULT_TRANS);
 
-		break;
-
-	case CScene::MODE_RESULT:
-		break;
-
-	case CScene::MODE_RANKING:
 		break;
 
 	default:
@@ -476,18 +448,6 @@ void CDebug::ChangeDispPause(void)
 	{
 		// ポーズの表示状況を設定
 		CSceneGame::GetPause()->SetEnableDebugDisp(!CSceneGame::GetPause()->IsDebugDisp());
-	}
-}
-
-//============================================================
-//	リザルト遷移処理
-//============================================================
-void CDebug::ResultTrans(void)
-{
-	if (GET_INPUTKEY->IsTrigger(KEY_RESULT_TRANS))
-	{
-		// リザルト画面に遷移
-		GET_MANAGER->SetFadeScene(CScene::MODE_RESULT);
 	}
 }
 

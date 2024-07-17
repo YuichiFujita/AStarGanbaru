@@ -78,37 +78,10 @@
     <ClCompile Include="resource\texture.cpp">
       <Filter>01_flyweight</Filter>
     </ClCompile>
-    <ClCompile Include="resource\titleManager.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\tutorialManager.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\resultManager.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\retentionManager.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\rankingManager.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
     <ClCompile Include="resource\scene.cpp">
       <Filter>02_scene</Filter>
     </ClCompile>
     <ClCompile Include="resource\sceneGame.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\sceneRanking.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\sceneResult.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\sceneTitle.cpp">
-      <Filter>02_scene</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\sceneTutorial.cpp">
       <Filter>02_scene</Filter>
     </ClCompile>
     <ClCompile Include="resource\gameManager.cpp">
@@ -225,9 +198,6 @@
     <ClCompile Include="resource\multiValue.cpp">
       <Filter>05_2D</Filter>
     </ClCompile>
-    <ClCompile Include="resource\modelUI.cpp">
-      <Filter>05_2D</Filter>
-    </ClCompile>
     <ClCompile Include="resource\screen.cpp">
       <Filter>00_system</Filter>
     </ClCompile>
@@ -264,9 +234,6 @@
     <ClCompile Include="resource\particle3D.cpp">
       <Filter>06_3D</Filter>
     </ClCompile>
-    <ClCompile Include="resource\player.cpp">
-      <Filter>06_3D</Filter>
-    </ClCompile>
     <ClCompile Include="resource\scenery.cpp">
       <Filter>06_3D</Filter>
     </ClCompile>
@@ -274,9 +241,6 @@
       <Filter>06_3D</Filter>
     </ClCompile>
     <ClCompile Include="resource\scrollMeshRing.cpp">
-      <Filter>06_3D</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\shadow.cpp">
       <Filter>06_3D</Filter>
     </ClCompile>
     <ClCompile Include="resource\sky.cpp">
@@ -301,9 +265,6 @@
       <Filter>07_utility</Filter>
     </ClCompile>
     <ClCompile Include="resource\random.cpp">
-      <Filter>07_utility</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\stage.cpp">
       <Filter>07_utility</Filter>
     </ClCompile>
     <ClCompile Include="resource\timer.cpp">
@@ -413,37 +374,10 @@
     <ClInclude Include="resource\gameManager.h">
       <Filter>02_scene</Filter>
     </ClInclude>
-    <ClInclude Include="resource\rankingManager.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\resultManager.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\retentionManager.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
     <ClInclude Include="resource\scene.h">
       <Filter>02_scene</Filter>
     </ClInclude>
     <ClInclude Include="resource\sceneGame.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\sceneRanking.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\sceneResult.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\sceneTitle.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\sceneTutorial.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\tutorialManager.h">
-      <Filter>02_scene</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\titleManager.h">
       <Filter>02_scene</Filter>
     </ClInclude>
     <ClInclude Include="resource\character.h">
@@ -527,9 +461,6 @@
     <ClInclude Include="resource\flash.h">
       <Filter>05_2D</Filter>
     </ClInclude>
-    <ClInclude Include="resource\modelUI.h">
-      <Filter>05_2D</Filter>
-    </ClInclude>
     <ClInclude Include="resource\blur.h">
       <Filter>06_3D</Filter>
     </ClInclude>
@@ -554,9 +485,6 @@
     <ClInclude Include="resource\particle3D.h">
       <Filter>06_3D</Filter>
     </ClInclude>
-    <ClInclude Include="resource\player.h">
-      <Filter>06_3D</Filter>
-    </ClInclude>
     <ClInclude Include="resource\scenery.h">
       <Filter>06_3D</Filter>
     </ClInclude>
@@ -564,9 +492,6 @@
       <Filter>06_3D</Filter>
     </ClInclude>
     <ClInclude Include="resource\scrollMeshRing.h">
-      <Filter>06_3D</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\shadow.h">
       <Filter>06_3D</Filter>
     </ClInclude>
     <ClInclude Include="resource\sky.h">
@@ -591,9 +516,6 @@
       <Filter>07_utility</Filter>
     </ClInclude>
     <ClInclude Include="resource\random.h">
-      <Filter>07_utility</Filter>
-    </ClInclude>
-    <ClInclude Include="resource\stage.h">
       <Filter>07_utility</Filter>
     </ClInclude>
     <ClInclude Include="resource\timer.h">

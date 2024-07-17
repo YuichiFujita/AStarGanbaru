@@ -21,7 +21,6 @@
 #include "font.h"
 #include "character.h"
 #include "shader.h"
-#include "retentionManager.h"
 #include "debug.h"
 
 //************************************************************
@@ -53,7 +52,6 @@ CManager::CManager() :
 	m_pFade			(nullptr),	// フェードインスタンス
 	m_pLoading		(nullptr),	// ローディングインスタンス
 	m_pScene		(nullptr),	// シーンインスタンス
-	m_pRetention	(nullptr),	// データ保存マネージャー
 	m_pDebugProc	(nullptr),	// デバッグ表示
 	m_pDebug		(nullptr)	// デバッグ
 {
@@ -93,7 +91,6 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	m_pFade			= nullptr;		// フェードインスタンス
 	m_pLoading		= nullptr;		// ローディングインスタンス
 	m_pScene		= nullptr;		// シーンインスタンス
-	m_pRetention	= nullptr;		// データ保存マネージャー
 	m_pDebugProc	= nullptr;		// デバッグ表示
 	m_pDebug		= nullptr;		// デバッグ
 
@@ -173,16 +170,6 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// ライトの生成
 	m_pLight = CLight::Create();
 	if (m_pLight == nullptr)
-	{ // 非使用中の場合
-
-		// 失敗を返す
-		assert(false);
-		return E_FAIL;
-	}
-
-	// データ保存マネージャーの生成
-	m_pRetention = CRetentionManager::Create();
-	if (m_pRetention == nullptr)
 	{ // 非使用中の場合
 
 		// 失敗を返す
@@ -402,9 +389,6 @@ void CManager::Uninit(void)
 	//--------------------------------------------------------
 	//	システムの破棄
 	//--------------------------------------------------------
-	// データ保存マネージャーの破棄
-	SAFE_REF_RELEASE(m_pRetention);
-
 	// シーンの破棄
 	SAFE_REF_RELEASE(m_pScene);
 
@@ -927,18 +911,6 @@ CScene *CManager::GetScene(void)
 
 	// シーンのポインタを返す
 	return m_pScene;
-}
-
-//============================================================
-//	データ保存マネージャー取得処理
-//============================================================
-CRetentionManager *CManager::GetRetention(void)
-{
-	// インスタンス未使用
-	assert(m_pRetention != nullptr);
-
-	// データ保存マネージャーを返す
-	return m_pRetention;
 }
 
 //============================================================

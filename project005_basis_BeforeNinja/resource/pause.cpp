@@ -384,8 +384,8 @@ void CPause::Select(void)
 
 			case SELECT_EXIT:	// 終了
 
-				// タイトル画面に遷移
-				GET_MANAGER->SetFadeScene(CScene::MODE_TITLE);
+				// ゲーム画面に遷移
+				GET_MANAGER->SetFadeScene(CScene::MODE_GAME);
 
 				// 処理を抜ける
 				break;
