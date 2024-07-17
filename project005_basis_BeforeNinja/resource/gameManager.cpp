@@ -8,25 +8,14 @@
 //	インクルードファイル
 //************************************************************
 #include "gameManager.h"
-#include "manager.h"
-#include "fade.h"
-#include "scene.h"
-#include "sceneGame.h"
-#include "cinemaScope.h"
-#include "timerUI.h"
-#include "camera.h"
-#include "multiModel.h"
+#include "field.h"
 
 //************************************************************
 //	定数宣言
 //************************************************************
 namespace
 {
-	const D3DXVECTOR3 POS_NAME	 = D3DXVECTOR3(0.0f, 60.0f, 400.0f);	// 名前の表示位置
-	const D3DXVECTOR3 POS_SKIP	 = D3DXVECTOR3(1092.0f, 673.0f, 0.0f);	// スキップ操作の表示位置
-	const D3DXVECTOR3 SIZE_SKIP	 = D3DXVECTOR3(381.0f, 77.0f, 0.0f);	// スキップ操作の表示大きさ
-	const int CHANGE_UI_PRIORITY = 5;	// シネマスコープ終了時のUI優先順位
-	const int GAMEEND_WAIT_FRAME = 180;	// リザルト画面への遷移余韻フレーム
+
 }
 
 //************************************************************
@@ -35,8 +24,7 @@ namespace
 //============================================================
 //	コンストラクタ
 //============================================================
-CGameManager::CGameManager() :
-	m_state	(STATE_NONE)	// 状態
+CGameManager::CGameManager()
 {
 
 }
@@ -55,7 +43,8 @@ CGameManager::~CGameManager()
 HRESULT CGameManager::Init(void)
 {
 	// メンバ変数を初期化
-	m_state = STATE_NORMAL;	// 状態
+
+	CField::Create(CField::TYPE_GRID, VEC3_ZERO, VEC3_ZERO, VEC2_ONE * 500.0f, XCOL_WHITE, GRID2_ONE, GRID2_ONE * 10);
 
 	// 成功を返す
 	return S_OK;
@@ -74,34 +63,7 @@ void CGameManager::Uninit(void)
 //============================================================
 void CGameManager::Update(const float fDeltaTime)
 {
-	switch (m_state)
-	{ // 状態ごとの処理
-	case STATE_NONE:
-	case STATE_NORMAL:
-		break;
 
-	default:	// 例外処理
-		assert(false);
-		break;
-	}
-}
-
-//============================================================
-//	状態設定処理
-//============================================================
-void CGameManager::SetState(const EState state)
-{
-	// 状態を設定
-	m_state = state;
-}
-
-//============================================================
-//	状態取得処理
-//============================================================
-CGameManager::EState CGameManager::GetState(void) const
-{
-	// 状態を返す
-	return m_state;
 }
 
 //============================================================

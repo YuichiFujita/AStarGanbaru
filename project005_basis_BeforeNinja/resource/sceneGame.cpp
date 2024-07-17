@@ -9,7 +9,6 @@
 //************************************************************
 #include "sceneGame.h"
 #include "manager.h"
-#include "sound.h"
 #include "camera.h"
 #include "gameManager.h"
 #include "pause.h"
@@ -81,9 +80,6 @@ HRESULT CSceneGame::Init(void)
 		return E_FAIL;
 	}
 
-	// BGMの再生
-	PLAY_SOUND(CSound::LABEL_BGM_GAME);
-
 	// 成功を返す
 	return S_OK;
 }
@@ -112,13 +108,9 @@ void CSceneGame::Update(const float fDeltaTime)
 	assert(m_pGameManager != nullptr);
 	m_pGameManager->Update(fDeltaTime);
 
-	if (m_pGameManager->GetState() == CGameManager::STATE_NORMAL)
-	{ // ゲームが通常状態の場合
-
-		// ポーズの更新
-		assert(m_pPause != nullptr);
-		m_pPause->Update(fDeltaTime);
-	}
+	// ポーズの更新
+	assert(m_pPause != nullptr);
+	m_pPause->Update(fDeltaTime);
 
 	if (!m_pPause->IsPause())
 	{ // ポーズ中ではない場合
@@ -128,18 +120,17 @@ void CSceneGame::Update(const float fDeltaTime)
 	}
 
 #ifdef _DEBUG
-
 	else
 	{ // ポーズ中の場合
 
-		if (GET_MANAGER->GetCamera()->GetState() == CCamera::STATE_CONTROL)
+		CCamera *pCamera = GET_MANAGER->GetCamera();	// カメラ情報
+		if (pCamera->GetState() == CCamera::STATE_CONTROL)
 		{ // カメラが操作状態の場合
 
 			// カメラの更新
-			GET_MANAGER->GetCamera()->Update(fDeltaTime);
+			pCamera->Update(fDeltaTime);
 		}
 	}
-
 #endif	// _DEBUG
 }
 
