@@ -25,6 +25,9 @@
     <Filter Include="07_utility">
       <UniqueIdentifier>{f6608d6c-8b6c-412d-a240-d8aff196d570}</UniqueIdentifier>
     </Filter>
+    <Filter Include="08_ingame">
+      <UniqueIdentifier>{6cb8c824-7028-47ac-8553-1c7f80612ca1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="resource\camera.cpp">
@@ -272,6 +275,9 @@
     </ClCompile>
     <ClCompile Include="resource\useful.cpp">
       <Filter>07_utility</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\block.cpp">
+      <Filter>08_ingame</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -523,6 +529,9 @@
     </ClInclude>
     <ClInclude Include="resource\useful.h">
       <Filter>07_utility</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\block.h">
+      <Filter>08_ingame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

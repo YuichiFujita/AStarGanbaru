@@ -8,14 +8,33 @@
 //	インクルードファイル
 //************************************************************
 #include "gameManager.h"
-#include "field.h"
+#include "block.h"
 
 //************************************************************
 //	定数宣言
 //************************************************************
 namespace
 {
-
+	const char* TEXTURE[] =	// 地面ごとのテクスチャ
+	{
+		"data\\TEXTURE\\grid000.png",	// 通常地面
+		"data\\TEXTURE\\grid001.png",	// 壁判定
+		"data\\TEXTURE\\grid002.png",	// スタート/ゴール
+	};
+	const int TYPE_GRID[grid::HEIGHT][grid::WIDTH] =	// ブロック種類
+	{
+		{ 2, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 1, 1, 1, 1, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 1, 1, 1, 1, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+		{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 2 },
+	};
+	const D3DXVECTOR3 SIZE_GRID = D3DXVECTOR3(40.0f, 40.0f, 0.0f);	// グリッドの大きさ
 }
 
 //************************************************************
@@ -26,7 +45,8 @@ namespace
 //============================================================
 CGameManager::CGameManager()
 {
-
+	// メンバ変数をクリア
+	memset(&m_apGrid[0][0], 0, sizeof(m_apGrid));	// グリッド情報
 }
 
 //============================================================
@@ -43,8 +63,39 @@ CGameManager::~CGameManager()
 HRESULT CGameManager::Init(void)
 {
 	// メンバ変数を初期化
+	memset(&m_apGrid[0][0], 0, sizeof(m_apGrid));	// グリッド情報
 
-	CField::Create(CField::TYPE_GRID, VEC3_ZERO, VEC3_ZERO, VEC2_ONE * 500.0f, XCOL_WHITE, GRID2_ONE, GRID2_ONE * 10);
+	for (int i = 0; i < grid::HEIGHT; i++)
+	{
+		for (int j = 0; j < grid::WIDTH; j++)
+		{
+			// グリッドの位置を求める
+			D3DXVECTOR3 pos = D3DXVECTOR3
+			(
+				-(SIZE_GRID.x * grid::WIDTH * 0.5f)  + (SIZE_GRID.x * j),
+				-(SIZE_GRID.y * grid::HEIGHT * 0.5f) + (SIZE_GRID.y * i),
+				0.0f
+			);
+
+			// グリッドの生成
+			m_apGrid[j][i] = CBlock::Create
+			( // 引数
+				(CBlock::EType)TYPE_GRID[j][i],	// 種類
+				pos,				// 位置
+				SIZE_GRID * 0.95f	// 大きさ
+			);
+			if (m_apGrid[j][i] == nullptr)
+			{ // 生成に失敗した場合
+
+				// 失敗を返す
+				assert(false);
+				return E_FAIL;
+			}
+
+			// ラベルの設定
+			m_apGrid[j][i]->SetLabel(CObject::LABEL_BLOCK);	// 自動更新・破棄が行われるようになる
+		}
+	}
 
 	// 成功を返す
 	return S_OK;
